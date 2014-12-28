@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "typo_detector/command"
+
+TypoDetector::Command.new(ARGV).run
