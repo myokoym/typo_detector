@@ -11,6 +11,9 @@ module TypoDetector
 
     def run
       word_counts = {}
+      word_resources = {}
+      max_width = 0
+
       each_files do |path|
         words = nil
         begin
@@ -23,12 +26,20 @@ module TypoDetector
         words.each do |word|
           word_counts[word] ||= 0
           word_counts[word] += 1
+          word_resources[word] = path
         end
+
+        width = words.collect {|word| word.size}.max
+        max_width = width if width > max_width
       end
+
       word_counts.select! do |word, count|
         count == 1
       end
-      puts word_counts.keys.sort
+
+      word_counts.keys.sort_by {|word, count| word_resources[word]}.each do |word|
+        puts "#{"%#{max_width}s" % word}: #{word_resources[word]}"
+      end
     end
 
     private
