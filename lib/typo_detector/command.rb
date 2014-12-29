@@ -62,7 +62,7 @@ module TypoDetector
     end
 
     def show
-      @word_counts.keys.sort_by {|word, count| @word_resources[word]}.each do |word|
+      @word_counts.keys.sort.sort_by {|word, count| @word_resources[word]}.each do |word|
         puts "#{"%#{@max_width}s" % word}: #{@word_resources[word]}"
       end
     end
