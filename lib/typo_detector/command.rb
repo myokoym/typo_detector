@@ -10,6 +10,7 @@ module TypoDetector
       @word_counts = {}
       @word_resources = {}
       @max_width = 0
+      @scan_pattern = scan_pattern
     end
 
     def run
@@ -29,16 +30,28 @@ module TypoDetector
                 "Use `git ls-files` with a directory.") do |boolean|
         options[:git] = boolean
       end
+      parser.on("-_",
+                "Split by '_'.") do |boolean|
+        options[:_] = boolean
+      end
       parser.parse!(arguments)
 
       options
+    end
+
+    def scan_pattern
+      if @options[:_]
+        /[A-Za-z0-9]+/
+      else
+        /\w+/
+      end
     end
 
     def index
       each_files do |path|
         words = nil
         begin
-          words = File.read(path).scan(/\w+/)
+          words = File.read(path).scan(@scan_pattern)
         rescue
           $stderr.puts("#{$!.message}: <#{path}>")
           next
