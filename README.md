@@ -22,6 +22,16 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+## Authors
+
+* Masafumi Yokoyama `<myokoym@gmail.com>`
+
+## License
+
+This software is distributed under the zlib license.
+
+See LICENSE.txt for details.
+
 ## Contributing
 
 1. Fork it ( https://github.com/myokoym/typo_detector/fork )

@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{A detective tool for typo.}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/myokoym/typo_detector"
-  spec.license       = "MIT"
+  spec.license       = "zlib"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) {|f| File.basename(f) }
