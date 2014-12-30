@@ -63,7 +63,7 @@ module TypoDetector
           @word_resources[word] = path
         end
 
-        width = words.collect {|word| word.size}.max
+        width = words.collect {|word| word.size}.max || 0
         @max_width = width if width > @max_width
       end
     end
