@@ -20,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Files
+
+    $ typo_detector [FILE]...
+
+### Git repositories
+
+    $ typo_detector -g [DIRECTORY]...
 
 ## Authors
 
