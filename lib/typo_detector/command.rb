@@ -82,8 +82,8 @@ module TypoDetector
 
     def each_files
       if @options[:git]
-        @paths.each do |path|
-          FileUtils.cd(path) do
+        @paths.each do |git_dir_path|
+          FileUtils.cd(git_dir_path) do
             `git ls-files`.split(/\n/).each do |path|
               yield(path)
             end
