@@ -63,7 +63,7 @@ module TypoDetector
           if dirname
             @word_resources[word] = File.join(dirname, path)
           else
-          @word_resources[word] = path
+            @word_resources[word] = path
           end
         end
 
