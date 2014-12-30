@@ -48,7 +48,7 @@ module TypoDetector
     end
 
     def index
-      each_files do |path|
+      each_files do |path, dirname|
         words = nil
         begin
           words = File.read(path).scan(@scan_pattern)
@@ -60,7 +60,11 @@ module TypoDetector
         words.each do |word|
           @word_counts[word] ||= 0
           @word_counts[word] += 1
+          if dirname
+            @word_resources[word] = File.join(dirname, path)
+          else
           @word_resources[word] = path
+          end
         end
 
         width = words.collect {|word| word.size}.max || 0
@@ -83,9 +87,10 @@ module TypoDetector
     def each_files
       if @options[:git]
         @paths.each do |git_dir_path|
+          git_dir_basename = File.basename(git_dir_path)
           FileUtils.cd(git_dir_path) do
             `git ls-files`.split(/\n/).each do |path|
-              yield(path)
+              yield(path, git_dir_basename)
             end
           end
         end
