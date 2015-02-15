@@ -38,6 +38,9 @@ This software is distributed under the zlib license.
 
 See LICENSE.txt for details.
 
+(Masafumi Yokoyama has a right to change the license including
+contributed patches.)
+
 ## Contributing
 
 1. Fork it ( https://github.com/myokoym/typo_detector/fork )
